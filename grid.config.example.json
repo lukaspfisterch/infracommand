@@ -1,0 +1,154 @@
+{
+  "TOOLS_DIR": "%LOCALAPPDATA%\\Support\\Tools",
+  "SCRIPTS_DIR": "./scripts",
+  "LOCAL_LOG_DIR": "%LOCALAPPDATA%\\Support\\Logs\\Cockpit",
+  "CENTRAL_LOG_DIR": "%LOCALAPPDATA%\\Support\\Logs_CENTRAL\\Cockpit",
+  "ROWS": 2,
+  "COLS": 2,
+  "FILL_RATIO": 0.995,
+  "EDGE_MARGIN_RATIO": 0.01,
+  "WINDOW_OPACITY": 0.85,
+  "RR_ORDER": [ "BR", "TL", "BL" ],
+  "FALLBACK_TRIES": 12,
+  "FALLBACK_DELAY_MS": 1200,
+  "FALLBACK_DELAY_ELEV_MS": 3500,
+  "SAFE_MODE": true,
+  "STRICT_PID": true,
+  "MATCH_CHILDREN": true,
+  "WINDOW_WAIT_MS": 2500,
+  "WINDOW_WAIT_MSC_MS": 4000,
+  "UAC_SKIP_MOVE": true,
+  "MAX_TOOL_BUTTONS": 12,
+  "BUTTON_COLUMNS": 0,
+  "GUI_START_QUADRANT": "TR",
+  "BASELINE_PATH": "Baseline.ps1",
+  "BASELINE_DELAY_MS": 400,
+  "DEFAULT_CLUSTER": "Quick",
+  "QUICK_CLUSTER": "Quick",
+  "TOOLS": {
+    "Main": [
+      {
+        "label": "Baseline (manual)",
+        "type": "ps1",
+        "path": "Baseline.ps1",
+        "args": "",
+        "elevate": false,
+        "risk": "read",
+        "weight": 10
+      },
+      {
+        "label": "Explorer (C:)",
+        "type": "exe",
+        "path": "explorer.exe",
+        "args": [ "/n,", "/e,", "C:\\" ],
+        "elevate": false,
+        "match": {
+          "strict_pid": false,
+          "classes": [ "CabinetWClass", "ExploreWClass", "ApplicationFrameWindow" ],
+          "title_contains": [ "explorer", "file explorer", "datei-explorer", "computer", "c:\\" ]
+        }
+      },
+      {
+        "label": "Event Viewer",
+        "type": "exe",
+        "path": "eventvwr.exe",
+        "args": "",
+        "elevate": true,
+        "hints": {
+          "class": "MMCMainFrame",
+          "title_contains": "Event"
+        },
+        "risk": "read",
+        "weight": 30
+      },
+      {
+        "label": "Task Manager",
+        "type": "exe",
+        "path": "taskmgr.exe",
+        "args": "",
+        "elevate": false,
+        "risk": "read",
+        "weight": 50
+      },
+      {
+        "label": "Settings",
+        "type": "exe",
+        "path": "ms-settings:",
+        "args": "",
+        "elevate": false,
+        "risk": "read",
+        "weight": 60
+      },
+      {
+        "label": "This PC",
+        "type": "exe",
+        "path": "explorer.exe",
+        "args": [ "/n,", "/e,", "::{20D04FE0-3AEA-1069-A2D8-08002B30309D}" ],
+        "elevate": true,
+        "risk": "read",
+        "weight": 70
+      },
+      {
+        "label": "CMD",
+        "type": "ps1",
+        "path": "CMD.ps1",
+        "elevate": false,
+        "risk": "read",
+        "weight": 80
+      },
+      {
+        "label": "PowerShell",
+        "type": "ps1",
+        "path": "PowerShell.ps1",
+        "elevate": false,
+        "risk": "read",
+        "weight": 5
+      },
+      {
+        "label": "PowerShell (Admin)",
+        "type": "ps1",
+        "path": "PowerShell-Admin.ps1",
+        "elevate": true,
+        "risk": "read",
+        "weight": 5
+      }
+    ],
+    "Troubleshooting": [
+      {
+        "label": "Computer Management",
+        "type": "exe",
+        "path": "mmc.exe",
+        "args": [ "compmgmt.msc" ],
+        "elevate": true,
+        "risk": "read",
+        "weight": 30
+      },
+      {
+        "label": "PowerShell",
+        "type": "ps1",
+        "path": "PowerShell.ps1",
+        "args": "",
+        "elevate": false,
+        "risk": "read",
+        "weight": 40
+      },
+      {
+        "label": "PowerShell (Admin)",
+        "type": "ps1",
+        "path": "PowerShell-Admin.ps1",
+        "args": "",
+        "elevate": true,
+        "risk": "read",
+        "weight": 40
+      },
+      {
+        "label": "CMD",
+        "type": "ps1",
+        "path": "CMD-Admin.ps1",
+        "elevate": true,
+        "risk": "read",
+        "weight": 80
+      }
+    ]
+  }
+}
