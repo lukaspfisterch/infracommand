@@ -1,66 +1,71 @@
- InfraCommand (Support Cockpit)
+# InfraCommand — Support Cockpit
 
-InfraCommand is a lightweight **Support Cockpit** for Windows admins.  
-It started as a small launcher for daily support tasks and is evolving into a broader infrastructure command tool.
+A modern Windows support and administration cockpit.  
+InfraCommand provides a **central hub** for launching tools, running scripts, and managing sessions — optimized for IT support, system engineers, and hybrid environments.
 
----
+## ✨ Features
 
-## ✨ Features (v1.1.0)
+- 🚀 **Launcher & Scripts**  
+  Grid-based launcher with JSON configuration, direct PowerShell/CMD integration
 
-- ✅ **Baseline Summary** – one-click system health snapshot  
-- ✅ **Cache & Reset Tools** – Outlook, Teams, OneDrive cleanup (safe defaults)  
-- ✅ **Sysinternals Integration** – Process Explorer, TCPView, RAMMap  
-- ✅ **Session Awareness** – RDSH / Horizon detection  
-- ✅ **Smart Window Placement** – grid-based quadrant layout  
-- ✅ **Config-Driven Menus** – extend with JSON (`grid.config.json`)  
+- 🖥️ **Window Management**  
+  Smart quadrant placement, UAC-aware launches, RDSH session support
 
----
+- 🎨 **Modern UI/UX**  
+  Qt-based dark theme, frameless design, responsive scaling
+
+- 📊 **Operational Awareness**  
+  Session-aware info, baseline automation, integrated logging
 
 ## 📸 Screenshots
 
-![Support Cockpit Main Menu](screenshots/main-menu.png)
+| Main Interface | Full 3-Window View | Explorer Integration |
+|:---:|:---:|:---:|
+| ![InfraCommand Main Menu](screenshots/main-menu.jpg) | ![Full Screen (3 Windows)](screenshots/full-3-windows.jpg) | ![3× Explorer Demo](screenshots/three-explorer.jpg) |
+| Clean grid launcher | Multi-window management | Smart window placement |
 
----
-
-## 🚀 Installation
+## ⚙️ Installation
 
 ### Prerequisites
-
-- Windows 10/11  
-- Python 3.12 (tested), Python 3.13 (compatible)  
-- PowerShell 5.1+ (or PowerShell 7.x)
+- Windows 10/11
+- Python 3.8+
+- PowerShell 5.1+
 
 ### Setup
 
 1. **Clone repository:**
-```bash
-git clone https://github.com/lukaspfisterch/InfraCommand.git
-cd InfraCommand
-Install dependencies:
+   ```bash
+   git clone https://github.com/yourusername/infracommand.git
+   cd infracommand
+   ```
 
-bash
-Code kopieren
-pip install -r requirements.txt
-Configure settings:
+2. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-bash
-Code kopieren
-copy grid.config.example.json grid.config.json
-# Adjust tools and paths as needed
-Start:
+3. **Configure settings:**
+   ```bash
+   # Copy example config
+   copy grid.config.example.json grid.config.json
+   # Edit grid.config.json and adjust tools/paths as needed
+   ```
 
-bash
-Code kopieren
-python infracommand.py
-⚙️ Configuration
-Example: grid.config.json
-json
-Code kopieren
+4. **Start:**
+   ```bash
+   python infracommand.py
+   ```
+
+## Configuration
+
+### grid.config.json
+
+```json
 {
-  "TOOLS_DIR": "C:\\Support\\Tools",
+  "TOOLS_DIR": "%LOCALAPPDATA%\\Support\\Tools",
   "SCRIPTS_DIR": "./scripts",
-  "LOCAL_LOG_DIR": "C:\\Support\\Logs\\Cockpit",
-  "CENTRAL_LOG_DIR": "C:\\Support\\Logs_CENTRAL\\Cockpit",
+  "LOCAL_LOG_DIR": "%LOCALAPPDATA%\\Support\\Logs\\Cockpit",
+  "CENTRAL_LOG_DIR": "%LOCALAPPDATA%\\Support\\Logs_CENTRAL\\Cockpit",
   "TOOLS": {
     "Main": [
       {
@@ -72,80 +77,71 @@ Code kopieren
     ]
   }
 }
-Supported Tool Types
-ps1 – PowerShell scripts
+```
 
-cmd – CMD commands
+### Tool Types
 
-exe – Executables
+- **`ps1`** - PowerShell scripts
+- **`cmd`** - CMD commands
+- **`exe`** - Executables
+- **`url`** - Web links
 
-url – Web links
+## Usage
 
-🎮 Usage
-Basic Operation
-Start tool: Click button
+### Basic Operation
 
-Window positioning: Automatic quadrant placement
+1. **Start tool:** Click button
+2. **Window positioning:** Automatic by quadrants
+3. **UAC:** Automatic elevation for admin tools
 
-UAC: Automatic elevation for admin tools
+### Keyboard Shortcuts
 
-Keyboard Shortcuts
-F11 – Fullscreen
+- `F11` - Fullscreen
+- `ESC` - Close
+- `Ctrl+Q` - Quit
 
-ESC – Close
+## Development
 
-Ctrl+Q – Quit
+### Project Structure
 
-🛠 Development
-Project Structure
-bash
-Code kopieren
-InfraCommand/
+```
+infracommand/
 ├── infracommand.py          # Main application
 ├── window_utils.py          # Window management
-├── grid.config.example.json # Example configuration
+├── grid.config.json         # Configuration
 ├── scripts/                 # PowerShell scripts
 │   ├── PowerShell.ps1
 │   ├── CMD.ps1
 │   └── ...
 ├── requirements.txt         # Python dependencies
-├── README.md                # This file
-└── LICENSE                  # License
-Contributing
-Fork the repository
+├── README.md               # This file
+└── LICENSE                 # License
+```
 
-Create feature branch (git checkout -b feature/AmazingFeature)
+### Contributing
 
-Commit changes (git commit -m 'Add some AmazingFeature')
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push branch (`git push origin feature/AmazingFeature`)
+5. Create Pull Request
 
-Push branch (git push origin feature/AmazingFeature)
+## License
 
-Create Pull Request
+This project is licensed under the MIT License - see [LICENSE](LICENSE) for details.
 
-🔮 Vision / Roadmap
-InfraCommand started as a small Support Cockpit – but the long-term vision goes further:
+## Support
 
-State-machine window orchestration – each tool tracked in a defined state
+For issues or questions:
+- Create an issue
+- Check documentation
+- Review code examples
 
-Multi-monitor layouts – distribute monitoring & action windows across screens
+## Changelog
 
-Framework-first design – orchestrator module instead of isolated scripts
-
-Future modules – FSLogix intelligence, AI log analysis, team-wide config sharing
-
-📜 License
-This project is licensed under the MIT License – see LICENSE for details.
-
-📝 Changelog
-v1.1.0
-First public release
-
-Baseline Summary (system checks)
-
-Cache/reset tools for Outlook, Teams, OneDrive
-
-Sysinternals integration (Process Explorer, TCPView, RAMMap)
-
-Session-aware window placement
-
-Config-driven menus and clusters
+### v1.0.0
+- Initial release
+- Grid-based tool launcher
+- PowerShell integration
+- UAC support
+- Smart window placement
