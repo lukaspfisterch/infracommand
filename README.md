@@ -21,7 +21,7 @@ InfraCommand provides a **central hub** for launching tools, running scripts, an
 
 | Main Interface | Full 3-Window View | Explorer Integration |
 |:---:|:---:|:---:|
-| ![InfraCommand Main Menu](screenshots/main-menu-v2.jpg) | ![Full Screen (3 Windows)](screenshots/full-3-windows.jpg) | ![3× Explorer Demo](screenshots/three-explorer.jpg) |
+| ![InfraCommand Main Menu](screenshots/main-menu.jpg) | ![Full Screen (3 Windows)](screenshots/full-3-windows.jpg) | ![3× Explorer Demo](screenshots/three-explorer.jpg) |
 | Clean grid launcher | Multi-window management | Smart window placement |
 
 ## ⚙️ Installation
