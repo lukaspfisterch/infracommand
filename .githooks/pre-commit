@@ -1,0 +1,37 @@
+#!/bin/sh
+# Pre-commit hook for InfraCommand
+# Ensures code quality and version consistency
+
+echo "🔍 Running pre-commit checks..."
+
+# Check if we're in a git repository
+if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    echo "❌ Not in a git repository"
+    exit 1
+fi
+
+# Check Python syntax
+echo "🐍 Checking Python syntax..."
+python -m py_compile infracommand.py window_utils.py
+if [ $? -ne 0 ]; then
+    echo "❌ Python syntax errors found"
+    exit 1
+fi
+
+# Check if CHANGELOG.md was updated for version changes
+if git diff --cached --name-only | grep -q "pyproject.toml"; then
+    if ! git diff --cached pyproject.toml | grep -q "version"; then
+        echo "⚠️  Version changed in pyproject.toml but CHANGELOG.md not updated"
+        echo "   Please update CHANGELOG.md with the new version changes"
+    fi
+fi
+
+# Check for TODO/FIXME comments in committed files
+echo "🔍 Checking for TODO/FIXME comments..."
+if git diff --cached --name-only | grep -E "\.(py|ps1)$" | xargs grep -n "TODO\|FIXME" 2>/dev/null; then
+    echo "⚠️  Found TODO/FIXME comments in committed files"
+    echo "   Consider resolving them before committing"
+fi
+
+echo "✅ Pre-commit checks passed"
+exit 0
