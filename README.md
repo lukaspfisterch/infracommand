@@ -1,3 +1,25 @@
+# InfraCommand – Support Cockpit
+
+InfraCommand is not a product pitch.  
+It is the result of years of working in Windows and VDI support and seeing the same pattern over and over again:
+
+- baseline checks are repeated manually,
+- tools are started in random order and random positions,
+- important signals are hidden in too many separate windows and logs.
+
+Instead of adding one more tool, InfraCommand builds a small **support cockpit**:
+
+- start the essential tools in a clean, repeatable layout,
+- run a defined set of baseline checks,
+- collect logs in one place for later analysis,
+- make the “first 10 minutes” of every case predictable.
+
+Most of the actual checks and actions are implemented as **PowerShell scripts**, so they can be adapted, extended or completely replaced to match a specific environment.
+
+The goal is simple: take what experienced engineers do in their heads and turn it into a quiet, transparent workflow.
+
+---
+
 # InfraCommand — Support Cockpit
 
 A modern Windows support and administration cockpit.  
@@ -145,3 +167,8 @@ For issues or questions:
 - PowerShell integration
 - UAC support
 - Smart window placement
+
+## Origin
+
+InfraCommand started as a personal project to make my own 2nd-level work easier in a large clinical IT environment.  
+The repository documents the ideas and implementation so that other support engineers can reuse, adapt or simply critique the approach.
