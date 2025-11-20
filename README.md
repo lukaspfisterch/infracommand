@@ -1,6 +1,7 @@
 # InfraCommand – Support Cockpit
 
-InfraCommand is not a product pitch.  
+Disclaimer: InfraCommand is a practitioner driven project. The primary goal is to solve real support and operations problems in a reproducible way. The codebase is evolving from script style towards a more modular Python package, but it should be read as an engineer’s working tool, not as a polished framework.
+
 It is the result of years of working in Windows and VDI support and seeing the same pattern over and over again:
 
 - baseline checks are repeated manually,
