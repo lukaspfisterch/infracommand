@@ -58,7 +58,7 @@ InfraCommand provides a **central hub** for launching tools, running scripts, an
 
 1. **Clone repository:**
    ```bash
-   git clone https://github.com/yourusername/infracommand.git
+   git clone https://github.com/lukaspfisterch/infracommand.git
    cd infracommand
    ```
 
